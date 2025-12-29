@@ -116,6 +116,9 @@ public class Invoice {
             throw new DomainException(String.format("Invoice %s with status %s cannot be edited",
                     this.getId(), this.getStatus().toString().toLowerCase()));
         }
+        if (this.getPaymentSettings() == null) {
+            throw new DomainException("Invoice has no payment settings");
+        }
         this.getPaymentSettings().assignGatewayCode(code);
     }
 
