@@ -60,6 +60,10 @@ class InvoiceManagementApplicationServiceIT {
         Assertions.assertThat(invoice.getStatus()).isEqualTo(InvoiceStatus.UNPAID);
         Assertions.assertThat(invoice.getOrderId()).isEqualTo(input.getOrderId());
 
+        Assertions.assertThat(invoice.getVersion()).isEqualTo(0L);
+        Assertions.assertThat(invoice.getCreatedAt()).isNotNull();
+        Assertions.assertThat(invoice.getCreatedByUserId()).isNotNull();
+
         Mockito.verify(invoincingService).issue(any(), any(), any(), any());
     }
 
