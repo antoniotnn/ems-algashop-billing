@@ -11,7 +11,7 @@ public class FastpayPaymentInput {
     private String referenceCode;
     private BigDecimal totalAmount;
     private String method;
-    private String creditCard;
+    private String creditCardId;
     private String fullName;
     private String document;
     private String phone;

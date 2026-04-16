@@ -14,7 +14,7 @@ public interface FastpayPaymentAPIClient {
     FastpayPaymentModel capture(@RequestBody FastpayPaymentInput input);
 
     @GetExchange(value = "/{paymentId}")
-    FastpayPaymentModel findByUd(@PathVariable String paymentId);
+    FastpayPaymentModel findById(@PathVariable String paymentId);
 
     @PutExchange(value = "/{paymentId/refund}")
     void refund(@PathVariable String paymentId);
