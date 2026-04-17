@@ -87,6 +87,8 @@ public class PaymentGatewayFastpayImpl implements PaymentGatewayService {
         builder.method(FastpayEnumConverter.convert(fastpayPaymentMethod));
         builder.status(FastpayEnumConverter.convert(fastpayPaymentStatus));
 
+
+
         return builder.build();
     }
 }
