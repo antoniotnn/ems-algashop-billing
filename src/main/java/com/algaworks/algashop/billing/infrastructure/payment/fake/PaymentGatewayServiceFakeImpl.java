@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @Service
 @ConditionalOnProperty(name = "algashop.integrations.payment.provider", havingValue = "FAKE")
-public class PaymentGatewatServiceFakeImpl implements PaymentGatewayService {
+public class PaymentGatewayServiceFakeImpl implements PaymentGatewayService {
 
     @Override
     public Payment capture(PaymentRequest request) {
