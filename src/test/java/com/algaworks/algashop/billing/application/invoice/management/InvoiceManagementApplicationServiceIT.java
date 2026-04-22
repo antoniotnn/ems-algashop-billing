@@ -36,7 +36,7 @@ class InvoiceManagementApplicationServiceIT {
     private CreditCardRepository creditCardRepository;
 
     @MockitoSpyBean
-    private InvoincingService invoincingService;
+    private InvoicingService invoicingService;
 
     @MockitoBean
     private PaymentGatewayService paymentGatewayService;
@@ -68,7 +68,7 @@ class InvoiceManagementApplicationServiceIT {
         Assertions.assertThat(invoice.getCreatedAt()).isNotNull();
         Assertions.assertThat(invoice.getCreatedByUserId()).isNotNull();
 
-        Mockito.verify(invoincingService).issue(any(), any(), any(), any());
+        Mockito.verify(invoicingService).issue(any(), any(), any(), any());
 
         Mockito.verify(invoiceEventListener).listen(Mockito.any(InvoiceIssuedEvent.class));
     }
@@ -89,7 +89,7 @@ class InvoiceManagementApplicationServiceIT {
         Assertions.assertThat(invoice.getStatus()).isEqualTo(InvoiceStatus.UNPAID);
         Assertions.assertThat(invoice.getOrderId()).isEqualTo(input.getOrderId());
 
-        Mockito.verify(invoincingService).issue(any(), any(), any(), any());
+        Mockito.verify(invoicingService).issue(any(), any(), any(), any());
     }
 
     @Test
@@ -112,7 +112,7 @@ class InvoiceManagementApplicationServiceIT {
         Assertions.assertThat(paidInvoice.isPaid()).isTrue();
 
         Mockito.verify(paymentGatewayService).capture(Mockito.any(PaymentRequest.class));
-        Mockito.verify(invoincingService).assignPayment(Mockito.any(Invoice.class), Mockito.any(Payment.class));
+        Mockito.verify(invoicingService).assignPayment(Mockito.any(Invoice.class), Mockito.any(Payment.class));
         Mockito.verify(invoiceEventListener).listen(Mockito.any(InvoicePaidEvent.class));
     }
 
@@ -136,7 +136,7 @@ class InvoiceManagementApplicationServiceIT {
         Assertions.assertThat(paidInvoice.isCanceled()).isTrue();
 
         Mockito.verify(paymentGatewayService).capture(Mockito.any(PaymentRequest.class));
-        Mockito.verify(invoincingService).assignPayment(Mockito.any(Invoice.class), Mockito.any(Payment.class));
+        Mockito.verify(invoicingService).assignPayment(Mockito.any(Invoice.class), Mockito.any(Payment.class));
         Mockito.verify(invoiceEventListener).listen(Mockito.any(InvoiceCanceledEvent.class));
     }
 
