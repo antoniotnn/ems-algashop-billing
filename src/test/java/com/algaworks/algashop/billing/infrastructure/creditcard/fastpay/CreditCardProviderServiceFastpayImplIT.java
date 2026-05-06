@@ -7,10 +7,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 
 @SpringBootTest
-@Import(FastpayCreditCardTokenizationAPIClientConfig.class)
 class CreditCardProviderServiceFastpayImplIT extends AbstractFastpayIT {
 
     @BeforeAll
